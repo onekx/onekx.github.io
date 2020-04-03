@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://onekx.github.io/"/>
-  <updated>2020-04-02T16:22:03.965Z</updated>
+  <updated>2020-04-03T10:40:31.114Z</updated>
   <id>http://onekx.github.io/</id>
   
   <author>
@@ -17,52 +17,27 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://onekx.github.io/post/hello-world/"/>
-    <id>http://onekx.github.io/post/hello-world/</id>
-    <published>2020-04-02T15:36:30.696Z</published>
-    <updated>2020-04-02T16:22:03.965Z</updated>
+    <title>博客搭建完成</title>
+    <link href="http://onekx.github.io/post/blog_completed/"/>
+    <id>http://onekx.github.io/post/blog_completed/</id>
+    <published>2020-04-03T09:48:59.000Z</published>
+    <updated>2020-04-03T10:40:31.114Z</updated>
     
-    <content type="html"><![CDATA[<html><head></head><body><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start">Quick Start<a class="post-anchor" href="#Quick-Start"></a></h2><h3 id="Create-a-new-post">Create a new post<a class="post-anchor" href="#Create-a-new-post"></a></h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></tbody></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server">Run server<a class="post-anchor" href="#Run-server"></a></h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></tbody></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files">Generate static files<a class="post-anchor" href="#Generate-static-files"></a></h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></tbody></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites">Deploy to remote sites<a class="post-anchor" href="#Deploy-to-remote-sites"></a></h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></tbody></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p></body></html>]]></content>
+    <content type="html"><![CDATA[<html><head></head><body><blockquote><p>本博客部署在 <a href="https://github.com/onekx/onekx.github.io" target="_blank" rel="noopener">Github Page</a>，由<a href="https://hexo.io/" target="_blank" rel="noopener"> Hexo</a> 驱动。</p></blockquote><hr><p><strong>在平时学习过程中，很多知识过于碎片化，搭建博客的初衷就是为了记录这些以往遇到的问题，并进行分享。如果所写的内容恰巧对你有所帮助，那就更好了。</strong></p><p><strong>搭建暂时就先告一段落吧，以后发现有什么不满意的地方再来进行改善。</strong></p></body></html>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Che
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;blockquote&gt;
+&lt;p&gt;本博客部署在 &lt;a href=&quot;https://github.com/onekx/onekx.github.io&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Github Pag
       
     
     </summary>
     
     
     
-      <category term="hello" scheme="http://onekx.github.io/tags/hello/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>test</title>
-    <link href="http://onekx.github.io/post/test/"/>
-    <id>http://onekx.github.io/post/test/</id>
-    <published>2020-03-02T18:09:05.000Z</published>
-    <updated>2020-04-03T03:35:18.167Z</updated>
-    
-    <content type="html"><![CDATA[<html><head></head><body><h1 id="测试博客">测试博客<a class="post-anchor" href="#测试博客"></a></h1></body></html>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;测试博客&quot;&gt;测试博客&lt;a class=&quot;post-anchor&quot; href=&quot;#测试博客&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;
-      
-    
-    </summary>
-    
-    
-    
-      <category term="test" scheme="http://onekx.github.io/tags/test/"/>
-    
-      <category term="wel" scheme="http://onekx.github.io/tags/wel/"/>
+      <category term="Blog" scheme="http://onekx.github.io/tags/Blog/"/>
     
   </entry>
   
