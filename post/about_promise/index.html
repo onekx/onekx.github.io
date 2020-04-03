@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      对 Promise 的理解 - Kx&#39;s Blog
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Kx's Blog" type="application/atom+xml">
+</head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">目录</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise的作用："><span class="toc-text">Promise的作用：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise的构造："><span class="toc-text">Promise的构造：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise的三种状态："><span class="toc-text">Promise的三种状态：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#then-、-catch-和-finally-的用法："><span class="toc-text">then 、 catch 和 finally  的用法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#all-和-race-方法："><span class="toc-text">all 和 race 方法：</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="icon-toc menu-reset">目录</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <div class="author">Kx&#39;s Blog</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <span class="iconfont icon-menu toggle-icon"></span>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Kx&#39;s Blog</div>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/onekx" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            <!--  
+            
+             -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">对 Promise 的理解</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/04/03</span>
+        </span>
+
+        
+
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/ES6">ES6</a>
+                  
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><a href="../../../images/Promise.png" data-caption data-fancybox="images"><img src="../../../images/Promise.png" alt></a>
+
+<hr>
+<p><strong>以下是自己对Promise的简单理解</strong></p>
+<h3 id="Promise的作用：">Promise的作用：<a class="post-anchor" href="#Promise的作用："></a></h3><p>js中使用回调函数进行事件处理，如果嵌套多层回调函数，将会陷入 回调地狱，使代码难以理解以及维护，例如：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript">method1(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, result</span>) </span>{<br>    <span class="hljs-keyword">if</span> (err) {<br>        <span class="hljs-keyword">throw</span> err;<br>    } <br>    method2(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, result</span>) </span>{<br>        <span class="hljs-keyword">if</span> (err) {<br>            <span class="hljs-keyword">throw</span> err;<br>        } <br>        method3(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, result</span>) </span>{<br>            <span class="hljs-keyword">if</span> (err) {<br>                <span class="hljs-keyword">throw</span> err;<br>            } <br>            method4(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, result</span>) </span>{<br>                <span class="hljs-keyword">if</span> (err) {<br>                    <span class="hljs-keyword">throw</span> err;<br>                } <br>                method5(result);<br>            });<br>        });<br>    });<br>});<br></code></pre></td></tr></tbody></table></figure>
+
+<p><strong>Promise就是解决以上这种问题的异步编程方案。</strong></p>
+<hr>
+<h3 id="Promise的构造：">Promise的构造：<a class="post-anchor" href="#Promise的构造："></a></h3><p>在控制台中将Promise打印出来:</p>
+<a href="../../../images/Promise的结构.png" data-caption data-fancybox="images"><img src="../../../images/Promise的结构.png" alt></a>
+
+<p>可以看到Promise对象是一个构造函数，且本身就包含了 resolve, reject, all, race等方法，原型上有 then, catch, finally等方法，所以 Promise new 出来的对象一定包含以上方法。</p>
+<hr>
+<h3 id="Promise的三种状态：">Promise的三种状态：<a class="post-anchor" href="#Promise的三种状态："></a></h3><p><strong>Pending（进行中）</strong>，<strong>Fulfilled（已完成）</strong>，<strong>Rejected（已拒绝）</strong></p>
+<p>当Promise被声明时，即处于 <strong>“Pending”</strong> 状态，接着 <strong>只有两种状态变更</strong> 的可能 <strong>“Pending => Fufilled”</strong> （Fufilled对应的就是resolve方法）和 <strong>“Pending => Rejected”</strong>，状态的变更是单向不可逆的。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> promise1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =></span> {});<br><span class="hljs-comment">// Pending状态</span><br><span class="hljs-keyword">var</span> promise2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =></span> resolve());<br><span class="hljs-comment">// Fulfilled状态</span><br><span class="hljs-keyword">var</span> promise3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =></span> reject());<br><span class="hljs-comment">// Rejected状态</span><br></code></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h3 id="then-、-catch-和-finally-的用法：">then 、 catch 和 finally  的用法：<a class="post-anchor" href="#then-、-catch-和-finally-的用法："></a></h3><p><strong>then的用法：</strong></p>
+<p>then可以理解为成功时调用的方法。then有两个参数，第一个参数是 resolved 状态的回调函数，第二个参数 <strong>(可选)</strong> 是 rejected 状态的回调函数。<strong>建议then中只接受第一个参数，第二个参数放到 catch 中解决</strong></p>
+<p><strong>catch的用法：</strong></p>
+<p>catch是失败时调用的方法。catch只接受一个参数，即当发生错误时的回调函数。<strong>.catch()</strong>  等同于 <strong>.then(null, rejection)</strong> 或  <strong>.then(undefined, rejection)</strong></p>
+<p><strong>finally的用法：</strong></p>
+<p>finally方法用于指定不管 Promise 对象最后状态如何，在执行完then或catch指定的回调函数以后，都会执行finally方法指定的回调函数。</p>
+<p>例：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> flag = <span class="hljs-literal">true</span>;<br><br><span class="hljs-keyword">var</span> promise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =></span> {<br>    <span class="hljs-keyword">if</span>(flag) {<br>        resolve(<span class="hljs-literal">true</span>);<br>    } <span class="hljs-keyword">else</span> {<br>        reject(<span class="hljs-literal">false</span>);<br>    }<br>});<br><br>promise.then(<span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'成功'</span>);<br>}).catch(<span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'失败'</span>);<br>}).finally(<span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'结束'</span>);<br>});<br><br><span class="hljs-comment">// 当 flag = true 时打印出 成功 结束。</span><br><span class="hljs-comment">// 当 flag = false 时打印出 失败 结束。</span><br></code></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h3 id="all-和-race-方法：">all 和 race 方法：<a class="post-anchor" href="#all-和-race-方法："></a></h3><p><strong>all的用法：</strong></p>
+<p>.all()接受一个 Promise 的示例数组，只有当所有全部 Promise 执行 resolve 或者有一个 reject 后才执行下一步。</p>
+<p>1.当所有 Promise 都为 resolve 时：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> promise1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =></span> {<br>    resolve(<span class="hljs-number">1</span>);<br>});<br><br><span class="hljs-keyword">let</span> promise2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =></span> {<br>    resolve(<span class="hljs-number">2</span>);<br>});<br><br><span class="hljs-keyword">let</span> promise3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =></span> {<br>    resolve(<span class="hljs-number">3</span>);<br>});<br><br><span class="hljs-keyword">let</span> promise4 = <span class="hljs-built_in">Promise</span>.all([promise1,promise2,promise3]);<br>promise4.then(<span class="hljs-function"><span class="hljs-params">value</span> =></span> {<br>    <span class="hljs-built_in">console</span>.log(value);<br>})<br><br><span class="hljs-comment">// [1,2,3]</span><br><span class="hljs-comment">// 在有不同延时的定时器情况下，输出的顺序仍然会按照原参数的顺序输出，还是[1,2,3]</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>2.若某个 Promise 被拒绝了，那么会立即结束，不会等待其他 Promise 的结束：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> promise1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>) =></span> {<br>    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>        reject(<span class="hljs-number">1</span>);<br>    },<span class="hljs-number">1000</span>);<br>});<br><br><span class="hljs-keyword">let</span> promise2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>) =></span> {<br>    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>        resolve(<span class="hljs-number">2</span>);<br>    },<span class="hljs-number">2000</span>);<br>});<br><br><span class="hljs-keyword">let</span> promise3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>) =></span> {<br>    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>        resolve(<span class="hljs-number">3</span>);<br>    },<span class="hljs-number">3000</span>);<br>});<br><br><span class="hljs-keyword">let</span> promise4 = <span class="hljs-built_in">Promise</span>.all([promise1,promise2,promise3]);<br>promise4.then(<span class="hljs-function"><span class="hljs-params">value</span> =></span> {<br>    <span class="hljs-built_in">console</span>.log(value);<br>}).catch(<span class="hljs-function"><span class="hljs-params">value</span> =></span> {<br>    <span class="hljs-built_in">console</span>.log(value);<br>})<br>    <br><span class="hljs-comment">// 1</span><br><span class="hljs-comment">// 因为 promise1 为 reject，所以 .all() 会理解结束，不会等待 promise2 和 promise3 的结束</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p><strong>race 的用法：</strong></p>
+<p>race 与 all 一样可以接受一个由 Promise 组成的数组作为参数，但是 race 不会等待所有 Promise 执行完成，只要数组中有一个 Promise 状态发生改变，调用 race 方法的 Promise 就会立即改变，状态由最先结束的 Promise 决定。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> promise1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>) =></span> {<br>    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>        reject(<span class="hljs-number">1</span>);<br>    },<span class="hljs-number">4000</span>);<br>});<br><br><span class="hljs-keyword">let</span> promise2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>) =></span> {<br>    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>        resolve(<span class="hljs-number">2</span>);<br>    },<span class="hljs-number">2000</span>);<br>});<br><br><span class="hljs-keyword">let</span> promise3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>) =></span> {<br>    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>        resolve(<span class="hljs-number">3</span>);<br>    },<span class="hljs-number">3000</span>);<br>});<br><br><span class="hljs-keyword">let</span> promise4 = <span class="hljs-built_in">Promise</span>.race([promise1,promise2,promise3]);<br>promise4.then(<span class="hljs-function"><span class="hljs-params">value</span> =></span> {<br>    <span class="hljs-built_in">console</span>.log(value);<br>}).catch(<span class="hljs-function"><span class="hljs-params">value</span> =></span> {<br>    <span class="hljs-built_in">console</span>.log(value);<br>})<br><br><span class="hljs-comment">// 2</span><br><span class="hljs-comment">// promise2 延时两秒最先完成，然后立即结束，状态为resolve</span><br></code></pre></td></tr></tbody></table></figure>
+
+</body></html>
+
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/post/blog_completed/">博客搭建完成</a>
+        
+    </div>
+  </div>
+
+  
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            尚未成功，仍须努力
+            <br/>
+            ©2020
+            Powered by Hexo
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"qqkongjian\",\"QQ\",\"douban\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
