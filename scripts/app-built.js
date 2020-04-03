@@ -291,9 +291,7 @@ define('share',['jquery', 'confirm'], function($) {
   }
 })
 ;
-/**
- * 站内搜索
- */
+
 define('search',['jquery', 'util'], function($, util) {
   'use strict'
 
@@ -435,7 +433,7 @@ require([
       visitor: true,
       recordIP: true,
       avatar: 'mp',
-      placeholder: '骑士很煎蛋、骑士很孜然'
+      placeholder: 'Kx'
     })
   }
 
