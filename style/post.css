@@ -38,6 +38,15 @@
   font-size: 2rem;
   margin-bottom: 1rem;
 }
+.post-entry .header .titleAbout,
+.post-wrap .header .titleAbout {
+  width: 5rem;
+  height: 2rem;
+  letter-spacing: 0.5rem;
+  font-size: 2rem;
+  display: block;
+  margin: 0 auto 1rem;
+}
 .post-entry .header .meta,
 .post-wrap .header .meta {
   font-size: 0.75rem;
