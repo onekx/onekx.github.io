@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="博客, 前端, 编程" />
+    <meta name="description" content="Kx 的个人博客" />
+    
+    <title>
+      ESLint 的配置 - Kx&#39;s Blog
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Kx's Blog" type="application/atom+xml">
+</head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">目录</span>
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-安装所需要的包"><span class="toc-text">1. 安装所需要的包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-如果配置文件里有使用到airbnb，通过以下命令来安装eslint-config-airbnb及它的相关依赖"><span class="toc-text">2. 如果配置文件里有使用到airbnb，通过以下命令来安装eslint-config-airbnb及它的相关依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-设置一个配置文件"><span class="toc-text">3. 设置一个配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-在根目录下-eslintrc-文件中配置自己的rules，以下是我使用的配置："><span class="toc-text">4. 在根目录下 .eslintrc 文件中配置自己的rules，以下是我使用的配置：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-在-package-json-文件中配置husky和lint-staged，用于提交前的检测，示例："><span class="toc-text">5. 在 package.json 文件中配置husky和lint-staged，用于提交前的检测，示例：</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="icon-toc menu-reset">目录</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <div class="author">Kx&#39;s Blog</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <span class="iconfont icon-menu toggle-icon"></span>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Kx&#39;s Blog</div>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/onekx" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            <!--  
+            
+             -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">ESLint 的配置</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/04/04</span>
+        </span>
+
+        
+
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/ESLint">ESLint</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h4 id="1-安装所需要的包">1. 安装所需要的包<a class="post-anchor" href="#1-安装所需要的包"></a></h4>   <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><code class="hljs shell">npm install --save-dev husky lint-staged eslint<br></code></pre></td></tr></tbody></table></figure>
+
+<h4 id="2-如果配置文件里有使用到airbnb，通过以下命令来安装eslint-config-airbnb及它的相关依赖">2. 如果配置文件里有使用到airbnb，通过以下命令来安装eslint-config-airbnb及它的相关依赖<a class="post-anchor" href="#2-如果配置文件里有使用到airbnb，通过以下命令来安装eslint-config-airbnb及它的相关依赖"></a></h4>   <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><code class="hljs shell">npm install --save-dev eslint-config-airbnb  <br>npm install --save eslint-plugin-import eslint-plugin-react eslint-plugin-jsx-a11y<br></code></pre></td></tr></tbody></table></figure>
+
+<h4 id="3-设置一个配置文件">3. 设置一个配置文件<a class="post-anchor" href="#3-设置一个配置文件"></a></h4>   <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><code class="hljs shell">./node_modules/.bin/eslint --init<br></code></pre></td></tr></tbody></table></figure>
+
+<h4 id="4-在根目录下-eslintrc-文件中配置自己的rules，以下是我使用的配置：">4. 在根目录下 .eslintrc 文件中配置自己的rules，以下是我使用的配置：<a class="post-anchor" href="#4-在根目录下-eslintrc-文件中配置自己的rules，以下是我使用的配置："></a></h4>   <figure class="highlight json"><table><tbody><tr><td class="code"><pre><code class="hljs json">{  <br> <span class="hljs-attr">"env"</span>: {  <br>     <span class="hljs-attr">"browser"</span>: <span class="hljs-literal">true</span>,  <br>     <span class="hljs-attr">"es6"</span>: <span class="hljs-literal">true</span>,  <br>     <span class="hljs-attr">"node"</span>: <span class="hljs-literal">true</span>  <br> },  <br> <span class="hljs-attr">"extends"</span>: [  <br>     <span class="hljs-string">"airbnb"</span>  <br> ],  <br> <span class="hljs-attr">"parser"</span>: <span class="hljs-string">"babel-eslint"</span>,  <br> <span class="hljs-attr">"globals"</span>: {  <br>     <span class="hljs-attr">"Atomics"</span>: <span class="hljs-string">"readonly"</span>,  <br>     <span class="hljs-attr">"SharedArrayBuffer"</span>: <span class="hljs-string">"readonly"</span>  <br> },  <br> <span class="hljs-attr">"parserOptions"</span>: {  <br>     <span class="hljs-attr">"ecmaFeatures"</span>: {  <br>         <span class="hljs-attr">"jsx"</span>: <span class="hljs-literal">true</span>,  <br>         <span class="hljs-attr">"legacyDecorators"</span>: <span class="hljs-literal">true</span>  <br>     },  <br>     <span class="hljs-attr">"ecmaVersion"</span>: <span class="hljs-number">2018</span>,  <br>     <span class="hljs-attr">"sourceType"</span>: <span class="hljs-string">"module"</span>  <br> },  <br> <span class="hljs-attr">"plugins"</span>: [  <br>     <span class="hljs-string">"react"</span>  <br> ],  <br> <span class="hljs-attr">"rules"</span>: {  <br>     <span class="hljs-attr">"indent"</span>: [<span class="hljs-string">"error"</span>, <span class="hljs-number">4</span>, { <span class="hljs-attr">"SwitchCase"</span>: <span class="hljs-number">1</span>,<span class="hljs-attr">"flatTernaryExpressions"</span>: <span class="hljs-literal">true</span> }],  <br>     <span class="hljs-attr">"max-len"</span>: [<span class="hljs-string">"error"</span>, { <span class="hljs-attr">"code"</span>: <span class="hljs-number">120</span>, <span class="hljs-attr">"ignoreUrls"</span>: <span class="hljs-literal">true</span> }],  <br>     <span class="hljs-attr">"react/jsx-indent"</span>: [<span class="hljs-string">"error"</span>, <span class="hljs-number">4</span>],  <br>     <span class="hljs-attr">"react/jsx-indent-props"</span>: [<span class="hljs-string">"error"</span>, <span class="hljs-number">4</span>],  <br>     <span class="hljs-attr">"react/jsx-filename-extension"</span>: [<span class="hljs-string">"warn"</span>, { <span class="hljs-attr">"extensions"</span>: [<span class="hljs-string">".js"</span>,<span class="hljs-string">".jsx"</span>] }],  <br>     <span class="hljs-attr">"react/prop-types"</span>: <span class="hljs-string">"off"</span>,  <br>     <span class="hljs-attr">"no-unused-expressions"</span>: [<span class="hljs-string">"error"</span>, { <span class="hljs-attr">"allowShortCircuit"</span>: <span class="hljs-literal">true</span> }],  <br>     <span class="hljs-attr">"no-underscore-dangle"</span>: <span class="hljs-number">0</span>,  <br>     <span class="hljs-attr">"no-console"</span>: [<span class="hljs-string">"error"</span>, { <span class="hljs-attr">"allow"</span>: [<span class="hljs-string">"log"</span>] }],  <br>     <span class="hljs-attr">"react/jsx-props-no-spreading"</span>: [<span class="hljs-string">"error"</span>, { <span class="hljs-attr">"custom"</span>: <span class="hljs-string">"ignore"</span> }],  <br>     <span class="hljs-attr">"import/no-cycle"</span>: <span class="hljs-number">0</span>,  <br>     <span class="hljs-attr">"radix"</span>: [<span class="hljs-string">"error"</span>, <span class="hljs-string">"as-needed"</span>]  <br> }  <br> }<br></code></pre></td></tr></tbody></table></figure>
+
+<h4 id="5-在-package-json-文件中配置husky和lint-staged，用于提交前的检测，示例：">5. 在 package.json 文件中配置husky和lint-staged，用于提交前的检测，示例：<a class="post-anchor" href="#5-在-package-json-文件中配置husky和lint-staged，用于提交前的检测，示例："></a></h4>   <figure class="highlight"><table><tbody><tr><td class="code"><pre><code class="hljs json">"husky": {  <br>    "hooks": {    <br>        "pre-commit": "lint-staged"  <br>     }<br> },<br> "lint-staged": {  <br>     "*.js": [    <br>         "eslint --fix",    <br>         <span class="hljs-string">"git add"</span>  <br>     ]<br> }<br></code></pre></td></tr></tbody></table></figure>
+
+</body></html>
+
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/post/about_promise/">对 Promise 的理解</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="declare">
+      版权声明：本文首发于<a href="http://onekx.github.io">Kx</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            尚未成功，仍须努力
+            <br/>
+            ©2020
+            Powered by Hexo
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"qqkongjian\",\"QQ\",\"douban\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
