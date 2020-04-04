@@ -2482,6 +2482,7 @@ a {
   border-radius: 100%;
   background-color: #7f7f7f;
   transition: all 0.2s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 #fixed-menu:hover {
   transform: scale(1.1, 1.1);
@@ -2496,6 +2497,7 @@ a {
 }
 #fixed-menu-wrap {
   z-index: 999;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 #fixed-menu-wrap span {
   bottom: 1rem;
