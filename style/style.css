@@ -2859,6 +2859,7 @@ a {
   justify-content: flex-end;
   width: 40%;
   margin: 0.3rem 0;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 #container .posts .item .describe .meta .r a {
   color: #333;
