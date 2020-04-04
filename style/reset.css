@@ -162,7 +162,12 @@ a {
   padding: 0 0.2rem;
 }
 ::-webkit-scrollbar {
-  width: 0rem;
+  width: 7px;
+  background: #fff;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #23211b;
+  border-radius: 5px;
 }
 ::selection {
   color: #333;
