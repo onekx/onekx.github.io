@@ -223,6 +223,11 @@ a {
   box-sizing: border-box;
   position: relative;
 }
+.post-entry .aboutHeader,
+.post-wrap .aboutHeader {
+  width: 100%;
+  height: 3rem;
+}
 .post-entry .header,
 .post-wrap .header {
   position: relative;
@@ -729,7 +734,7 @@ a {
 }
 .hljs {
   display: block;
-  overflow-x: auto;
+  white-space: break-spaces;
   padding: 0.5em;
   background: #011627;
   color: #d6deeb;
@@ -2557,7 +2562,7 @@ a {
   padding: 0.3rem;
   box-sizing: border-box;
   position: absolute;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 #container .main {

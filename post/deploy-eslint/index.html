@@ -118,7 +118,6 @@
       <div class="main animated bounceInRight delay-0.7s">
         <article class="post-entry">
     <div class="header">
-      
       <div class="title">ESLint 的配置</div>
       <div class="meta">
         <span class="item">
@@ -155,7 +154,6 @@
 <h4 id="4-在根目录下-eslintrc-文件中配置自己的rules，以下是我使用的配置：">4. 在根目录下 .eslintrc 文件中配置自己的rules，以下是我使用的配置：<a class="post-anchor" href="#4-在根目录下-eslintrc-文件中配置自己的rules，以下是我使用的配置："></a></h4>   <figure class="highlight json"><table><tbody><tr><td class="code"><pre><code class="hljs json">{  <br> <span class="hljs-attr">"env"</span>: {  <br>     <span class="hljs-attr">"browser"</span>: <span class="hljs-literal">true</span>,  <br>     <span class="hljs-attr">"es6"</span>: <span class="hljs-literal">true</span>,  <br>     <span class="hljs-attr">"node"</span>: <span class="hljs-literal">true</span>  <br> },  <br> <span class="hljs-attr">"extends"</span>: [  <br>     <span class="hljs-string">"airbnb"</span>  <br> ],  <br> <span class="hljs-attr">"parser"</span>: <span class="hljs-string">"babel-eslint"</span>,  <br> <span class="hljs-attr">"globals"</span>: {  <br>     <span class="hljs-attr">"Atomics"</span>: <span class="hljs-string">"readonly"</span>,  <br>     <span class="hljs-attr">"SharedArrayBuffer"</span>: <span class="hljs-string">"readonly"</span>  <br> },  <br> <span class="hljs-attr">"parserOptions"</span>: {  <br>     <span class="hljs-attr">"ecmaFeatures"</span>: {  <br>         <span class="hljs-attr">"jsx"</span>: <span class="hljs-literal">true</span>,  <br>         <span class="hljs-attr">"legacyDecorators"</span>: <span class="hljs-literal">true</span>  <br>     },  <br>     <span class="hljs-attr">"ecmaVersion"</span>: <span class="hljs-number">2018</span>,  <br>     <span class="hljs-attr">"sourceType"</span>: <span class="hljs-string">"module"</span>  <br> },  <br> <span class="hljs-attr">"plugins"</span>: [  <br>     <span class="hljs-string">"react"</span>  <br> ],  <br> <span class="hljs-attr">"rules"</span>: {  <br>     <span class="hljs-attr">"indent"</span>: [<span class="hljs-string">"error"</span>, <span class="hljs-number">4</span>, { <span class="hljs-attr">"SwitchCase"</span>: <span class="hljs-number">1</span>,<span class="hljs-attr">"flatTernaryExpressions"</span>: <span class="hljs-literal">true</span> }],  <br>     <span class="hljs-attr">"max-len"</span>: [<span class="hljs-string">"error"</span>, { <span class="hljs-attr">"code"</span>: <span class="hljs-number">120</span>, <span class="hljs-attr">"ignoreUrls"</span>: <span class="hljs-literal">true</span> }],  <br>     <span class="hljs-attr">"react/jsx-indent"</span>: [<span class="hljs-string">"error"</span>, <span class="hljs-number">4</span>],  <br>     <span class="hljs-attr">"react/jsx-indent-props"</span>: [<span class="hljs-string">"error"</span>, <span class="hljs-number">4</span>],  <br>     <span class="hljs-attr">"react/jsx-filename-extension"</span>: [<span class="hljs-string">"warn"</span>, { <span class="hljs-attr">"extensions"</span>: [<span class="hljs-string">".js"</span>,<span class="hljs-string">".jsx"</span>] }],  <br>     <span class="hljs-attr">"react/prop-types"</span>: <span class="hljs-string">"off"</span>,  <br>     <span class="hljs-attr">"no-unused-expressions"</span>: [<span class="hljs-string">"error"</span>, { <span class="hljs-attr">"allowShortCircuit"</span>: <span class="hljs-literal">true</span> }],  <br>     <span class="hljs-attr">"no-underscore-dangle"</span>: <span class="hljs-number">0</span>,  <br>     <span class="hljs-attr">"no-console"</span>: [<span class="hljs-string">"error"</span>, { <span class="hljs-attr">"allow"</span>: [<span class="hljs-string">"log"</span>] }],  <br>     <span class="hljs-attr">"react/jsx-props-no-spreading"</span>: [<span class="hljs-string">"error"</span>, { <span class="hljs-attr">"custom"</span>: <span class="hljs-string">"ignore"</span> }],  <br>     <span class="hljs-attr">"import/no-cycle"</span>: <span class="hljs-number">0</span>,  <br>     <span class="hljs-attr">"radix"</span>: [<span class="hljs-string">"error"</span>, <span class="hljs-string">"as-needed"</span>]  <br> }  <br> }<br></code></pre></td></tr></tbody></table></figure>
 
 <h4 id="5-在-package-json-文件中配置husky和lint-staged，用于提交前的检测，示例：">5. 在 package.json 文件中配置husky和lint-staged，用于提交前的检测，示例：<a class="post-anchor" href="#5-在-package-json-文件中配置husky和lint-staged，用于提交前的检测，示例："></a></h4>   <figure class="highlight"><table><tbody><tr><td class="code"><pre><code class="hljs json">"husky": {  <br>    "hooks": {    <br>        "pre-commit": "lint-staged"  <br>     }<br> },<br> "lint-staged": {  <br>     "*.js": [    <br>         "eslint --fix",    <br>         <span class="hljs-string">"git add"</span>  <br>     ]<br> }<br></code></pre></td></tr></tbody></table></figure>
-
 </body></html>
 
   <div class="post-guide">
@@ -169,18 +167,11 @@
     </div>
   </div>
 
-  
-
   <div class="post-copyright">
     <div class="declare">
-      版权声明：本文首发于<a href="http://onekx.github.io">Kx</a>的博客，转载请注明出处！
+      本文首发于<a href="http://onekx.github.io">Kx's Blog</a>，转载请注明出处！
     </div>
   </div>
-
-  <div id="comment"></div>
-
-  
-  
 </article>
         <footer>
           <div class="copyright">

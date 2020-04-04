@@ -28,6 +28,11 @@
   box-sizing: border-box;
   position: relative;
 }
+.post-entry .aboutHeader,
+.post-wrap .aboutHeader {
+  width: 100%;
+  height: 3rem;
+}
 .post-entry .header,
 .post-wrap .header {
   position: relative;
