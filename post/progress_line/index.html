@@ -16,7 +16,7 @@
     <meta name="description" content="Kx 的个人博客" />
     
     <title>
-      归档2020/4 - Kx&#39;s Blog
+      实现页面上方进度条 - Kx&#39;s Blog
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -27,6 +27,11 @@
 </head>
   <body>
     <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">目录</span>
+      <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-首先在页面中添加："><span class="toc-text">1. 首先在页面中添加：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-设置样式："><span class="toc-text">2. 设置样式：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-编写-JS-代码："><span class="toc-text">3. 编写 JS 代码：</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="icon-toc menu-reset">目录</span>
@@ -46,7 +51,7 @@
           首页
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -83,7 +88,7 @@
             首页
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -111,61 +116,66 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-             - 2020/4
-        </div>
-    
+        <article class="post-entry">
+    <div class="header">
+      <div class="title">实现页面上方进度条</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/04/05</span>
+        </span>
 
+        
 
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/CSS">CSS</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><blockquote>
+<p>实现位于页面上方，跟随视图滚动而不断变化的进度条。</p>
+</blockquote>
+<h5 id="1-首先在页面中添加：">1. 首先在页面中添加：<a class="post-anchor" href="#1-首先在页面中添加："></a></h5><figure class="highlight html"><table><tbody><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag"><<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"progress"</span>></span><br>    <span class="hljs-tag"><<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"line"</span>></span><span class="hljs-symbol">&lt;</span>/div><br><span class="hljs-symbol">&lt;</span>/div><br></code></pre></td></tr></tbody></table></figure>
 
+<h5 id="2-设置样式：">2. 设置样式：<a class="post-anchor" href="#2-设置样式："></a></h5><figure class="highlight css"><table><tbody><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-id">#progress</span> {<br>    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span><br>    position: fixed<br>    width: <span class="hljs-number">100%</span><br>    height: <span class="hljs-number">0.2rem</span><br>    text-align: left<br>    z-index: <span class="hljs-number">9999</span><br>}<br><br><span class="hljs-selector-id">#progress</span> <span class="hljs-selector-class">.line</span> {<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">0%</span><br>    height: <span class="hljs-number">0.2rem</span><br>    background-color: <span class="hljs-number">#0099ff</span><br>}<br></code></pre></td></tr></tbody></table></figure>
 
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/post/progress_line/" title="实现页面上方进度条">
-                <span>2020/04/05</span>
-                <span>实现页面上方进度条</span>
-            </a>
-            </article>
-            
+<h5 id="3-编写-JS-代码：">3. 编写 JS 代码：<a class="post-anchor" href="#3-编写-JS-代码："></a></h5><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs JavaScript">$(<span class="hljs-built_in">window</span>).scroll(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{<br>      <span class="hljs-keyword">var</span> pageHeight = <span class="hljs-built_in">document</span>.documentElement.scrollHeight || <span class="hljs-built_in">document</span>.body.scrollHeight <span class="hljs-comment">// 页面总高度</span><br>      <span class="hljs-keyword">var</span> windowHeight = <span class="hljs-built_in">document</span>.documentElement.clientHeight || <span class="hljs-built_in">document</span>.body.clientHeight <span class="hljs-comment">// 浏览器视口高度</span><br>      <span class="hljs-keyword">var</span> scrollAvail = pageHeight - windowHeight <span class="hljs-comment">// 可滚动的高度</span><br>      <span class="hljs-keyword">var</span> scrollTop = <span class="hljs-built_in">document</span>.documentElement.scrollTop || <span class="hljs-built_in">document</span>.body.scrollTop <span class="hljs-comment">// 获取滚动条的高度</span><br>      <span class="hljs-keyword">var</span> ratio = (scrollTop / scrollAvail) * <span class="hljs-number">100</span> + <span class="hljs-string">'%'</span><br>      $(<span class="hljs-string">'#progress > .line'</span>).css(<span class="hljs-string">'width'</span>, ratio)<br>})<br></code></pre></td></tr></tbody></table></figure>
+</body></html>
 
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/post/deploy-eslint/">ESLint 的配置</a>
+        
+    </div>
+  </div>
 
-            <article class="item">
-            <a href="/post/deploy-eslint/" title="ESLint 的配置">
-                <span>2020/04/04</span>
-                <span>ESLint 的配置</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/post/about_promise/" title="对 Promise 的理解">
-                <span>2020/04/02</span>
-                <span>对 Promise 的理解</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
-      
-<div class="paginator">
-    <span class="page-number current">1</span>
-</div>
-</div>
-
+  <div class="post-copyright">
+    <div class="declare">
+      本文首发于<a href="http://onekx.github.io">Kx's Blog</a>，转载请注明出处！
+    </div>
+  </div>
+</article>
         <footer>
           <div class="copyright">
             尚未成功，仍须努力
