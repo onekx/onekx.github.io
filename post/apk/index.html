@@ -16,7 +16,7 @@
     <meta name="description" content="Kx 的个人博客" />
     
     <title>
-      归档2020 - Kx&#39;s Blog
+      react-native 打包 apk 文件 - Kx&#39;s Blog
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -27,6 +27,11 @@
 </head>
   <body>
     <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">目录</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-生成签名密钥："><span class="toc-text">1. 生成签名密钥：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-设置-gradle-变量"><span class="toc-text">2. 设置 gradle 变量:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-添加签名到应用的gradle配置中："><span class="toc-text">3. 添加签名到应用的gradle配置中：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-生成-release-版本的-APK-包："><span class="toc-text">4. 生成 release 版本的 APK 包：</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="icon-toc menu-reset">目录</span>
@@ -46,7 +51,7 @@
           首页
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -83,7 +88,7 @@
             首页
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -111,79 +116,88 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-             - 2020
-        </div>
-    
+        <article class="post-entry">
+    <div class="header">
+      <div class="title">react-native 打包 apk 文件</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/04/22</span>
+        </span>
 
+        
 
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/React-Native">React-Native</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h3 id="1-生成签名密钥：">1. 生成签名密钥：<a class="post-anchor" href="#1-生成签名密钥："></a></h3><p>打开 CMD ,输入下面一行命令:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><code class="hljs shell">keytool -genkeypair -v -keystore onekx.keystore -alias kx -keyalg RSA -keysize 2048 -validity 10000<br></code></pre></td></tr></tbody></table></figure>
 
+<ul>
+<li><strong>onekx.keystore</strong> 是待会儿会生成的密钥文件</li>
+<li><code>-alias</code>后的别名 <strong>kx</strong> 后面应用签名时会使用</li>
+<li><code>-validity</code>后的 10000 表示此密钥有效期 10000 天</li>
+</ul>
+<p>随后会要求输入以下问题：<strong>(必须将以下问题的回答都详细记录备份)</strong></p>
+<ol>
+<li>输入密钥库口令</li>
+<li>再次输入新口令</li>
+<li>名字与姓氏</li>
+<li>组织单位名称</li>
+<li>组织名称</li>
+<li>所在城市区域名称</li>
+<li>所在省/市/自治区名称</li>
+<li>国家/地区代码</li>
+<li>是否正确？<strong>(此时在命令行输入: 是)</strong> </li>
+</ol>
+<p>然后会生成一个 onekx.keystore 的文件，路径: <code>C:\用户\***</code></p>
+<h3 id="2-设置-gradle-变量">2. 设置 gradle 变量:<a class="post-anchor" href="#2-设置-gradle-变量"></a></h3><ul>
+<li>将 onekx.keystore 文件复制到项目的 android/app 目录下</li>
+<li>打开 ./android/app/gradle/gradle.properties 文件，在文件中加入如下代码，并把其中的*****替换为相应密码：</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><code class="hljs plain">MYAPP_RELEASE_STORE_FILE=onekx.keystore<br>MYAPP_RELEASE_KEY_ALIAS=kx<br>MYAPP_RELEASE_STORE_PASSWORD=*****<br>MYAPP_RELEASE_KEY_PASSWORD=*****<br></code></pre></td></tr></tbody></table></figure>
 
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/post/apk/" title="react-native 打包 apk 文件">
-                <span>2020/04/22</span>
-                <span>react-native 打包 apk 文件</span>
-            </a>
-            </article>
-            
+<h3 id="3-添加签名到应用的gradle配置中：">3. 添加签名到应用的gradle配置中：<a class="post-anchor" href="#3-添加签名到应用的gradle配置中："></a></h3><p>打开 ./android/app/build.gradle 文件,添加如下代码：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript">...<br>android {<br>    ...<br>    defaultConfig { ... }<br>    signingConfigs {<br>        release {<br>            <span class="hljs-keyword">if</span> (project.hasProperty(<span class="hljs-string">'MYAPP_RELEASE_STORE_FILE'</span>)) {<br>                storeFile file(MYAPP_RELEASE_STORE_FILE)<br>                storePassword MYAPP_RELEASE_STORE_PASSWORD<br>                keyAlias MYAPP_RELEASE_KEY_ALIAS<br>                keyPassword MYAPP_RELEASE_KEY_PASSWORD<br>            }<br>        }<br>    }<br>    buildTypes {<br>        release {<br>            ...<br>            signingConfig signingConfigs.release<br>        }<br>    }<br>}<br>...<br></code></pre></td></tr></tbody></table></figure>
 
+<h3 id="4-生成-release-版本的-APK-包：">4. 生成 release 版本的 APK 包：<a class="post-anchor" href="#4-生成-release-版本的-APK-包："></a></h3><p>打开终端，进入项目下的 ./android 目录，运行如下命令：</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><code class="hljs shell">./gradlew assembleRelease<br></code></pre></td></tr></tbody></table></figure>
 
-            <article class="item">
-            <a href="/post/life_cycle/" title="React 生命周期">
-                <span>2020/04/07</span>
-                <span>React 生命周期</span>
-            </a>
-            </article>
-            
+<p>此时会生成一个 <strong>app-release.apk</strong> 文件，就是软件的安装包，位于：<strong>./android/app/build/outputs/apk/release</strong> 目录下，打包完成。</p>
+</body></html>
 
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/post/life_cycle/">React 生命周期</a>
+        
+    </div>
+  </div>
 
-            <article class="item">
-            <a href="/post/progress_line/" title="实现页面上方进度条">
-                <span>2020/04/05</span>
-                <span>实现页面上方进度条</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/post/deploy_eslint/" title="ESLint 的配置">
-                <span>2020/04/04</span>
-                <span>ESLint 的配置</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/post/about_promise/" title="对 Promise 的理解">
-                <span>2020/04/02</span>
-                <span>对 Promise 的理解</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
-      
-<div class="paginator">
-    <span class="page-number current">1</span>
-</div>
-</div>
-
+  <div class="post-copyright">
+    <div class="declare">
+      本文首发于<a href="http://onekx.github.io">Kx's Blog</a>，转载请注明出处！
+    </div>
+  </div>
+</article>
         <footer>
           <div class="copyright">
             尚未成功，仍须努力
