@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://onekx.github.io/"/>
-  <updated>2020-04-22T12:40:26.334Z</updated>
+  <updated>2020-04-23T04:42:23.603Z</updated>
   <id>http://onekx.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>报错：Execution failed for task &#39;:app:installDebug&#39;</title>
+    <link href="http://onekx.github.io/post/install_debug/"/>
+    <id>http://onekx.github.io/post/install_debug/</id>
+    <published>2020-04-23T03:47:16.000Z</published>
+    <updated>2020-04-23T04:42:23.603Z</updated>
+    
+    <content type="html"><![CDATA[<html><head></head><body><p>当我在更新项目后，尝试重新打包 apk 时，报了下面的错误：</p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><code class="hljs plain">* What went wrong:<br>Execution failed for task ':app:installDebug'.<br>> com.android.builder.testing.api.DeviceException: com.android.ddmlib.InstallException: INSTALL_FAILED_UPDATE_INCOMPATIBLE: Package com.rndemo signatures do not match previously installed version; ignoring!<br></code></pre></td></tr></tbody></table></figure><p>原因是设备上存在的旧版本与此时的新版本冲突了。<br>解决办法：删除设备上的旧版本 App 或者清除虚拟设备的数据，然后重新打包</p></body></html>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;当我在更新项目后，尝试重新打包 apk 时，报了下面的错误：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code
+      
+    
+    </summary>
+    
+    
+    
+      <category term="React-Native" scheme="http://onekx.github.io/tags/React-Native/"/>
+    
+      <category term="Errors" scheme="http://onekx.github.io/tags/Errors/"/>
+    
+  </entry>
   
   <entry>
     <title>react-native 打包 apk 文件</title>
