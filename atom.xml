@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://onekx.github.io/"/>
-  <updated>2020-04-23T04:42:23.603Z</updated>
+  <updated>2020-04-23T06:18:50.910Z</updated>
   <id>http://onekx.github.io/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>报错：Execution failed for task &#39;:app:installDebug&#39;</title>
+    <title>修改 apk 相关信息</title>
+    <link href="http://onekx.github.io/post/change-apk/"/>
+    <id>http://onekx.github.io/post/change-apk/</id>
+    <published>2020-04-23T05:30:24.000Z</published>
+    <updated>2020-04-23T06:18:50.910Z</updated>
+    
+    <content type="html"><![CDATA[<html><head></head><body><h3 id="修改-app-名字">修改 app 名字<a class="post-anchor" href="#修改-app-名字"></a></h3><p>打开项目下的 <strong>./android/app/src/main/res/values/strings.xml</strong> 文件</p><figure class="highlight xml"><table><tbody><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag"><<span class="hljs-name">resources</span>></span><br>    <span class="hljs-tag"><<span class="hljs-name">string</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"app_name"</span>></span> ***** &lt/string><br>&lt/resources><br></code></pre></td></tr></tbody></table></figure><p>将其中的 ***** 替换为自己 app 的名字</p><h3 id="修改-app-图标">修改 app 图标<a class="post-anchor" href="#修改-app-图标"></a></h3><p>首先制作不同分辨率下的图标，生成以下目录（推荐网站：<a href="https://icon.wuruihong.com/" target="_blank" rel="noopener">图标工厂</a> ）：</p><div style="width: 250px; margin: auto"><a href="../../../images/图标工厂.png" data-caption data-fancybox="images"><img src="../../../images/图标工厂.png" alt></a></div><p>打开项目下的 <strong>./android/app/src/main/res</strong> 文件夹，用自己制作的文件替换掉 <strong>res</strong> 目录下的文件</p><h3 id="减小-apk-文件的大小">减小 apk 文件的大小<a class="post-anchor" href="#减小-apk-文件的大小"></a></h3><p>打开项目下 <strong>./android/app/build.gradle</strong> 文件，<strong>将下面两个 false 改为 true</strong></p><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript">def enableSeparateBuildPerCPUArchitecture = <span class="hljs-literal">false</span> <span class="hljs-comment">//更改为 true</span><br><br>def enableProguardInReleaseBuilds = <span class="hljs-literal">false</span> <span class="hljs-comment">//更改为 true</span><br></code></pre></td></tr></tbody></table></figure><ul><li>enableSeparateBuildPerCPUArchitecture 会生成多个适应不同 CPU 架构的包</li><li>如果想额外生成一个适应所有 CPU 架构的 apk ，则将文件中的 <code>universalApk false</code> 修改为 <code>universalApk true</code></li><li>enableProguardInReleaseBuilds 会移除掉 React Native Java（和它的依赖库中）中没有被使用到的部分，最终减少 apk 的大小。</li></ul></body></html>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h3 id=&quot;修改-app-名字&quot;&gt;修改 app 名字&lt;a class=&quot;post-anchor&quot; href=&quot;#修改-app-名字&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;打开项目下的 &lt;strong&gt;./android/app/src/m
+      
+    
+    </summary>
+    
+    
+    
+      <category term="React-Native" scheme="http://onekx.github.io/tags/React-Native/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>报错：&#39;app:installDebug&#39;</title>
     <link href="http://onekx.github.io/post/install_debug/"/>
     <id>http://onekx.github.io/post/install_debug/</id>
     <published>2020-04-23T03:47:16.000Z</published>
-    <updated>2020-04-23T04:42:23.603Z</updated>
+    <updated>2020-04-23T05:41:15.405Z</updated>
     
     <content type="html"><![CDATA[<html><head></head><body><p>当我在更新项目后，尝试重新打包 apk 时，报了下面的错误：</p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><code class="hljs plain">* What went wrong:<br>Execution failed for task ':app:installDebug'.<br>> com.android.builder.testing.api.DeviceException: com.android.ddmlib.InstallException: INSTALL_FAILED_UPDATE_INCOMPATIBLE: Package com.rndemo signatures do not match previously installed version; ignoring!<br></code></pre></td></tr></tbody></table></figure><p>原因是设备上存在的旧版本与此时的新版本冲突了。<br>解决办法：删除设备上的旧版本 App 或者清除虚拟设备的数据，然后重新打包</p></body></html>]]></content>
     

@@ -16,7 +16,7 @@
     <meta name="description" content="Kx 的个人博客" />
     
     <title>
-      归档 - Kx&#39;s Blog
+      修改 apk 相关信息 - Kx&#39;s Blog
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -27,6 +27,11 @@
 </head>
   <body>
     <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">目录</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#修改-app-名字"><span class="toc-text">修改 app 名字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改-app-图标"><span class="toc-text">修改 app 图标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#减小-apk-文件的大小"><span class="toc-text">减小 apk 文件的大小</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="icon-toc menu-reset">目录</span>
@@ -46,7 +51,7 @@
           首页
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -83,7 +88,7 @@
             首页
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -111,97 +116,72 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-            
-        </div>
-    
+        <article class="post-entry">
+    <div class="header">
+      <div class="title">修改 apk 相关信息</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/04/23</span>
+        </span>
 
+        
 
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/React-Native">React-Native</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h3 id="修改-app-名字">修改 app 名字<a class="post-anchor" href="#修改-app-名字"></a></h3><p>打开项目下的 <strong>./android/app/src/main/res/values/strings.xml</strong> 文件</p>
+<figure class="highlight xml"><table><tbody><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag"><<span class="hljs-name">resources</span>></span><br>    <span class="hljs-tag"><<span class="hljs-name">string</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"app_name"</span>></span> ***** &lt/string><br>&lt/resources><br></code></pre></td></tr></tbody></table></figure>
 
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/post/change-apk/" title="修改 apk 相关信息">
-                <span>2020/04/23</span>
-                <span>修改 apk 相关信息</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/post/install_debug/" title="报错：&#39;app:installDebug&#39;">
-                <span>2020/04/23</span>
-                <span>报错：&#39;app:installDebug&#39;</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/post/apk/" title="react-native 打包 apk 文件">
-                <span>2020/04/22</span>
-                <span>react-native 打包 apk 文件</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/post/life_cycle/" title="React 生命周期">
-                <span>2020/04/07</span>
-                <span>React 生命周期</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/post/progress_line/" title="实现页面上方进度条">
-                <span>2020/04/05</span>
-                <span>实现页面上方进度条</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/post/deploy_eslint/" title="ESLint 的配置">
-                <span>2020/04/04</span>
-                <span>ESLint 的配置</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/post/about_promise/" title="对 Promise 的理解">
-                <span>2020/04/02</span>
-                <span>对 Promise 的理解</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
-      
-<div class="paginator">
-    <span class="page-number current">1</span>
-</div>
+<p>将其中的 ***** 替换为自己 app 的名字</p>
+<h3 id="修改-app-图标">修改 app 图标<a class="post-anchor" href="#修改-app-图标"></a></h3><p>首先制作不同分辨率下的图标，生成以下目录（推荐网站：<a href="https://icon.wuruihong.com/" target="_blank" rel="noopener">图标工厂</a> ）：</p>
+<div style="width: 250px; margin: auto">
+<a href="../../../images/图标工厂.png" data-caption data-fancybox="images"><img src="../../../images/图标工厂.png" alt></a>
 </div>
 
+<p>打开项目下的 <strong>./android/app/src/main/res</strong> 文件夹，用自己制作的文件替换掉 <strong>res</strong> 目录下的文件</p>
+<h3 id="减小-apk-文件的大小">减小 apk 文件的大小<a class="post-anchor" href="#减小-apk-文件的大小"></a></h3><p>打开项目下 <strong>./android/app/build.gradle</strong> 文件，<strong>将下面两个 false 改为 true</strong></p>
+<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript">def enableSeparateBuildPerCPUArchitecture = <span class="hljs-literal">false</span> <span class="hljs-comment">//更改为 true</span><br><br>def enableProguardInReleaseBuilds = <span class="hljs-literal">false</span> <span class="hljs-comment">//更改为 true</span><br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>enableSeparateBuildPerCPUArchitecture 会生成多个适应不同 CPU 架构的包</li>
+<li>如果想额外生成一个适应所有 CPU 架构的 apk ，则将文件中的 <code>universalApk false</code> 修改为 <code>universalApk true</code></li>
+<li>enableProguardInReleaseBuilds 会移除掉 React Native Java（和它的依赖库中）中没有被使用到的部分，最终减少 apk 的大小。</li>
+</ul>
+</body></html>
+
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/post/install_debug/">报错：'app:installDebug'</a>
+        
+    </div>
+  </div>
+
+  <div class="post-copyright">
+    <div class="declare">
+      本文首发于<a href="http://onekx.github.io">Kx's Blog</a>，转载请注明出处！
+    </div>
+  </div>
+</article>
         <footer>
           <div class="copyright">
             尚未成功，仍须努力
