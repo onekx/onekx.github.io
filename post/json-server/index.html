@@ -16,7 +16,7 @@
     <meta name="description" content="Kx 的个人博客" />
     
     <title>
-      归档2020 - Kx&#39;s Blog
+      用 json-server 模拟服务器 - Kx&#39;s Blog
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -27,6 +27,11 @@
 </head>
   <body>
     <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">目录</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-全局安装-json-server"><span class="toc-text">1. 全局安装 json-server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-在项目目录下创建-server-文件夹和-db-json-文件，如下："><span class="toc-text">2. 在项目目录下创建 server 文件夹和 db.json 文件，如下：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-进入-server-目录下，启动服务"><span class="toc-text">3. 进入 server 目录下，启动服务</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="icon-toc menu-reset">目录</span>
@@ -46,7 +51,7 @@
           首页
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -83,7 +88,7 @@
             首页
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -111,106 +116,71 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-             - 2020
-        </div>
-    
+        <article class="post-entry">
+    <div class="header">
+      <div class="title">用 json-server 模拟服务器</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/04/25</span>
+        </span>
 
+        
 
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/json-server">json-server</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><p>利用 json-server 模拟服务器，可以进行数据的请求。</p>
+<h3 id="1-全局安装-json-server">1. 全局安装 json-server<a class="post-anchor" href="#1-全局安装-json-server"></a></h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><code class="hljs shell">npm install -g json-server<br></code></pre></td></tr></tbody></table></figure>
 
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/post/json-server/" title="用 json-server 模拟服务器">
-                <span>2020/04/25</span>
-                <span>用 json-server 模拟服务器</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/post/change-apk/" title="修改 apk 相关信息">
-                <span>2020/04/23</span>
-                <span>修改 apk 相关信息</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/post/install_debug/" title="报错：&#39;app:installDebug&#39;">
-                <span>2020/04/23</span>
-                <span>报错：&#39;app:installDebug&#39;</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/post/apk/" title="react-native 打包 apk 文件">
-                <span>2020/04/22</span>
-                <span>react-native 打包 apk 文件</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/post/life_cycle/" title="React 生命周期">
-                <span>2020/04/07</span>
-                <span>React 生命周期</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/post/progress_line/" title="实现页面上方进度条">
-                <span>2020/04/05</span>
-                <span>实现页面上方进度条</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/post/deploy_eslint/" title="ESLint 的配置">
-                <span>2020/04/04</span>
-                <span>ESLint 的配置</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/post/about_promise/" title="对 Promise 的理解">
-                <span>2020/04/02</span>
-                <span>对 Promise 的理解</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
-      
-<div class="paginator">
-    <span class="page-number current">1</span>
-</div>
+<h3 id="2-在项目目录下创建-server-文件夹和-db-json-文件，如下：">2. 在项目目录下创建 server 文件夹和 db.json 文件，如下：<a class="post-anchor" href="#2-在项目目录下创建-server-文件夹和-db-json-文件，如下："></a></h3><div style="width: 300px; margin: 0 auto">
+<a href="../../../images/json_server.png" data-caption data-fancybox="images"><img src="../../../images/json_server.png" alt></a>
 </div>
 
+<div style="width: 300px; margin: 0 auto">
+<a href="../../../images/db_json.png" data-caption data-fancybox="images"><img src="../../../images/db_json.png" alt></a>
+</div>
+
+<h3 id="3-进入-server-目录下，启动服务">3. 进入 server 目录下，启动服务<a class="post-anchor" href="#3-进入-server-目录下，启动服务"></a></h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><code class="hljs shell">cd server<br></code></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><code class="hljs shell">json-server db.json<br></code></pre></td></tr></tbody></table></figure>
+
+<p><strong>默认是 3000 端口，可以在命令中加 <code>--port</code> 参数改变端口,如<code>json-server --port 5000 db.json</code>将在 5000 端口启动服务。</strong></p>
+<p><strong>之后就可以请求 <a href="http://localhost:3000/result" target="_blank" rel="noopener">http://localhost:3000/result</a> 来获取数据。</strong></p>
+</body></html>
+
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/post/change-apk/">修改 apk 相关信息</a>
+        
+    </div>
+  </div>
+
+  <div class="post-copyright">
+    <div class="declare">
+      本文首发于<a href="http://onekx.github.io">Kx's Blog</a>，转载请注明出处！
+    </div>
+  </div>
+</article>
         <footer>
           <div class="copyright">
             尚未成功，仍须努力
