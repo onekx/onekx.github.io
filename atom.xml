@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://onekx.github.io/"/>
-  <updated>2020-04-25T11:57:55.601Z</updated>
+  <updated>2020-05-03T09:03:04.798Z</updated>
   <id>http://onekx.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>react-navigation 的配置</title>
+    <link href="http://onekx.github.io/post/config-navigation/"/>
+    <id>http://onekx.github.io/post/config-navigation/</id>
+    <published>2020-05-03T08:56:53.000Z</published>
+    <updated>2020-05-03T09:03:04.798Z</updated>
+    
+    <content type="html"><![CDATA[<html><head></head><body><blockquote><p>一定要查看官方的英文文档，其他中文文档有滞后，版本过低</p></blockquote><h3 id="1-安装基本模块">1. 安装基本模块<a class="post-anchor" href="#1-安装基本模块"></a></h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><code class="hljs shell">npm i @react-navigation/native<br></code></pre></td></tr></tbody></table></figure><h3 id="2-安装所需要的依赖项库">2. 安装所需要的依赖项库<a class="post-anchor" href="#2-安装所需要的依赖项库"></a></h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><code class="hljs shell">npm i react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view<br></code></pre></td></tr></tbody></table></figure><h3 id="3-安装三种导航模式">3. 安装三种导航模式<a class="post-anchor" href="#3-安装三种导航模式"></a></h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><code class="hljs shell">npm i @react-navigation/stack @react-navigation/bottom-tabs @react-navigation/drawer<br></code></pre></td></tr></tbody></table></figure><ul><li>StackNavigator: 栈导航</li><li>TabNavigator: 标签导航</li><li>DrawerNavigator: 抽屉导航</li></ul></body></html>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;blockquote&gt;
+&lt;p&gt;一定要查看官方的英文文档，其他中文文档有滞后，版本过低&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;1-安装基本模块&quot;&gt;1. 安装基本模块&lt;a class=&quot;post-anchor&quot; hre
+      
+    
+    </summary>
+    
+    
+    
+      <category term="React-Native" scheme="http://onekx.github.io/tags/React-Native/"/>
+    
+  </entry>
   
   <entry>
     <title>用 json-server 模拟服务器</title>
