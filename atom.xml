@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://onekx.github.io/"/>
-  <updated>2020-05-07T09:33:01.392Z</updated>
+  <updated>2020-05-11T01:46:29.957Z</updated>
   <id>http://onekx.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Express 中使用 HTML 模板</title>
+    <link href="http://onekx.github.io/post/express-html/"/>
+    <id>http://onekx.github.io/post/express-html/</id>
+    <published>2020-05-11T01:41:28.000Z</published>
+    <updated>2020-05-11T01:46:29.957Z</updated>
+    
+    <content type="html"><![CDATA[<html><head></head><body><p><strong>Express 默认使用的是 jade 模板，需要配置让其支持使用 ejs 或 html 模板。</strong></p><h3 id="1-安装-ejs">1.安装 ejs<a class="post-anchor" href="#1-安装-ejs"></a></h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><code class="hljs shell">npm install ejs<br></code></pre></td></tr></tbody></table></figure><h3 id="2-在-app-js-中引入-ejs">2.在 app.js 中引入 ejs<a class="post-anchor" href="#2-在-app-js-中引入-ejs"></a></h3><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> ejs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ejs'</span>);<br></code></pre></td></tr></tbody></table></figure><h3 id="3-设置-html-引擎">3.设置 html 引擎<a class="post-anchor" href="#3-设置-html-引擎"></a></h3><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript">app.engine(<span class="hljs-string">'html'</span>, ejs.__express);<br></code></pre></td></tr></tbody></table></figure><h3 id="4-设置视图引擎">4.设置视图引擎<a class="post-anchor" href="#4-设置视图引擎"></a></h3><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript">app.set(<span class="hljs-string">'view engine'</span>, <span class="hljs-string">'html'</span>);<br></code></pre></td></tr></tbody></table></figure><p>重启服务，能正常访问 HTML 文件。</p></body></html>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;strong&gt;Express 默认使用的是 jade 模板，需要配置让其支持使用 ejs 或 html 模板。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;1-安装-ejs&quot;&gt;1.安装 ejs&lt;a class=&quot;post-a
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Express" scheme="http://onekx.github.io/tags/Express/"/>
+    
+  </entry>
   
   <entry>
     <title>react-navigation 的安装</title>

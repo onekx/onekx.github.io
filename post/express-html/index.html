@@ -16,7 +16,7 @@
     <meta name="description" content="Kx 的个人博客" />
     
     <title>
-      归档2020/5 - Kx&#39;s Blog
+      Express 中使用 HTML 模板 - Kx&#39;s Blog
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -27,6 +27,11 @@
 </head>
   <body>
     <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">目录</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-安装-ejs"><span class="toc-text">1.安装 ejs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-在-app-js-中引入-ejs"><span class="toc-text">2.在 app.js 中引入 ejs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-设置-html-引擎"><span class="toc-text">3.设置 html 引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-设置视图引擎"><span class="toc-text">4.设置视图引擎</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="icon-toc menu-reset">目录</span>
@@ -46,7 +51,7 @@
           首页
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -83,7 +88,7 @@
             首页
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -109,52 +114,64 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-             - 2020/5
-        </div>
-    
+        <article class="post-entry">
+    <div class="header">
+      <div class="title">Express 中使用 HTML 模板</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/05/11</span>
+        </span>
 
+        
 
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/Express">Express</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><p><strong>Express 默认使用的是 jade 模板，需要配置让其支持使用 ejs 或 html 模板。</strong></p>
+<h3 id="1-安装-ejs">1.安装 ejs<a class="post-anchor" href="#1-安装-ejs"></a></h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><code class="hljs shell">npm install ejs<br></code></pre></td></tr></tbody></table></figure>
 
+<h3 id="2-在-app-js-中引入-ejs">2.在 app.js 中引入 ejs<a class="post-anchor" href="#2-在-app-js-中引入-ejs"></a></h3><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> ejs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ejs'</span>);<br></code></pre></td></tr></tbody></table></figure>
 
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/post/express-html/" title="Express 中使用 HTML 模板">
-                <span>2020/05/11</span>
-                <span>Express 中使用 HTML 模板</span>
-            </a>
-            </article>
-            
+<h3 id="3-设置-html-引擎">3.设置 html 引擎<a class="post-anchor" href="#3-设置-html-引擎"></a></h3><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript">app.engine(<span class="hljs-string">'html'</span>, ejs.__express);<br></code></pre></td></tr></tbody></table></figure>
 
+<h3 id="4-设置视图引擎">4.设置视图引擎<a class="post-anchor" href="#4-设置视图引擎"></a></h3><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript">app.set(<span class="hljs-string">'view engine'</span>, <span class="hljs-string">'html'</span>);<br></code></pre></td></tr></tbody></table></figure>
 
-            <article class="item">
-            <a href="/post/config-navigation/" title="react-navigation 的安装">
-                <span>2020/05/03</span>
-                <span>react-navigation 的安装</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
-      
-<div class="paginator">
-    <span class="page-number current">1</span>
-</div>
-</div>
+<p>重启服务，能正常访问 HTML 文件。</p>
+</body></html>
 
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/post/config-navigation/">react-navigation 的安装</a>
+        
+    </div>
+  </div>
+
+  <div class="post-copyright">
+    <div class="declare">
+      本文首发于<a href="http://onekx.github.io">Kx's Blog</a>，转载请注明出处！
+    </div>
+  </div>
+</article>
         <footer>
           <div class="copyright">
             尚未成功，仍须努力
